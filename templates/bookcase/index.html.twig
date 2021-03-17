@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_contents %}
+
+    <h1>{% block title %}Bookcase{% endblock %}</h1>
+    <a href={{ path('bookcase_add') }} class="btn btn-primary">Add</a>
+
+    <table class="table mt-3">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>
+                    {{ item.id }}
+                </td>
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>
+                    <a href="{{ path('bookcase_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <a href="{{ path('bookcase_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

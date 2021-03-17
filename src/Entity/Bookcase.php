@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\BookcaseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=BookcaseRepository::class)
@@ -19,6 +20,7 @@ class Bookcase
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 

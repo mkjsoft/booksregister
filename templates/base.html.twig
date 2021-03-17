@@ -3,17 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
+                <p class="h5 my-0 me-md-auto fw-normal">Books</p>
+                <nav class="my-2 my-md-0 me-md-3">
+                    <a class="p-2 text-dark" href="{{ path('book_add') }}">Add book</a>
+                    <a class="p-2 text-dark" href="{{ path('book') }}">Book</a>
+                    <a class="p-2 text-dark" href="{{ path('bookcase') }}">Bookcase</a>
+                </nav>
+                <a class="btn btn-outline-primary" href="#">Sign up</a>
+            </header>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
     </body>
 </html>
