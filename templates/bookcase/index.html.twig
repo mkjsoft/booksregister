@@ -14,6 +14,9 @@
                 Name
             </th>
             <th>
+                Owner
+            </th>
+            <th>
 
             </th>
             <th>
@@ -29,10 +32,17 @@
                     {{ item.name }}
                 </td>
                 <td>
-                    <a href="{{ path('bookcase_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
+                    {{ item.getUser().getEmail() }}
                 </td>
                 <td>
-                    <a href="{{ path('bookcase_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
+                    {% if item.getUser().getId() == app.user.id %}
+                        <a href="{{ path('bookcase_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item.getUser().getId() == app.user.id %}
+                        <a href="{{ path('bookcase_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}
