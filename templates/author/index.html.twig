@@ -2,8 +2,8 @@
 
 {% block page_contents %}
 
-    <h1>{% block title %}Bookcases{% endblock %}</h1>
-    <a href={{ path('bookcase_add') }} class="btn btn-primary">Add</a>
+    <h1>{% block title %}Authors{% endblock %}</h1>
+    <a href={{ path('author_add') }} class="btn btn-primary">Add</a>
 
     <table class="table mt-3">
         <tr>
@@ -14,7 +14,7 @@
                 Name
             </th>
             <th>
-                Owner
+                Birth
             </th>
             <th>
 
@@ -32,17 +32,13 @@
                     {{ item.name }}
                 </td>
                 <td>
-                    {{ item.getUser().getEmail() }}
+                    {{ item.birth }}
                 </td>
                 <td>
-                    {% if item.getUser().getId() == app.user.id %}
-                        <a href="{{ path('bookcase_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
-                    {% endif %}
+                    <a href="{{ path('author_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                    {% if item.getUser().getId() == app.user.id %}
-                        <a href="{{ path('bookcase_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
-                    {% endif %}
+                    <a href="{{ path('author_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         {% endfor %}
