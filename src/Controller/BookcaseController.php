@@ -22,7 +22,7 @@ class BookcaseController extends AbstractController
     }
 
     /**
-     * @Route("/bookcase", name="bookcase")
+     * @Route("/panel/bookcase", name="bookcase")
      */
     public function index(): Response
     {
@@ -36,7 +36,7 @@ class BookcaseController extends AbstractController
     }
 
     /**
-     * @Route("/bookcase/add", name="bookcase_add")
+     * @Route("/panel/bookcase/add", name="bookcase_add")
      */
     public function add(Request $request, ValidatorInterface $validator): Response
     {
@@ -64,7 +64,7 @@ class BookcaseController extends AbstractController
     }
 
     /**
-     * @Route("/bookcase/edit/{id}", name="bookcase_edit")
+     * @Route("/panel/bookcase/edit/{id}", name="bookcase_edit")
      */
     public function edit(int $id, Request $request, ValidatorInterface $validator): Response
     {
@@ -96,7 +96,7 @@ class BookcaseController extends AbstractController
     }
 
     /**
-     * @Route("/bookcase/delete/{id}", name="bookcase_delete")
+     * @Route("/panel/bookcase/delete/{id}", name="bookcase_delete")
      */
     public function delete(int $id): Response
     {
