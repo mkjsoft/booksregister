@@ -9,12 +9,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     /**
-     * @Route("/panel/", name="index")
+     * @Route("/", name="index")
      */
-    public function index(): Response
+    public function index()
     {
-        return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
-        ]);
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        return $this->redirectToRoute('dashboard');
+    }
+
+    /**
+     * @Route("/panel", name="dashboard")
+     */
+    public function dashboard(): Response
+    {
+        return $this->render('index/dashboard.html.twig', []);
     }
 }
