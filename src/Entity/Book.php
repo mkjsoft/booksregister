@@ -164,14 +164,14 @@ class Book
         return $this;
     }
 
-    public function getShelf(): ?int
+    public function getBookcaseShelf(): ?int
     {
         return $this->bookcase_shelf;
     }
 
-    public function setShelf(?int $shelf): self
+    public function setBookcaseShelf(?int $bookcase_shelf): self
     {
-        $this->bookcase_shelf = $shelf;
+        $this->bookcase_shelf = $bookcase_shelf;
 
         return $this;
     }

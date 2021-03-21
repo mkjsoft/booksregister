@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block page_contents %}
+
+    <h1>{% block title %}Books{% endblock %}</h1>
+    <a href={{ path('book_add') }} class="btn btn-primary">Add</a>
+
+    <table class="table mt-3">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Owner
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        {% for item in items %}
+            <tr>
+                <td>
+                    {{ item.id }}
+                </td>
+                <td>
+                    {{ item.title }}
+                </td>
+                <td>
+                    {{ item.getUser().getEmail() }}
+                </td>
+                <td>
+                    {% if item.getUser().getId() == app.user.id %}
+                        <a href="{{ path('bookcase_edit', {'id': item.id}) }}" class="btn btn-primary">Edit</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item.getUser().getId() == app.user.id %}
+                        <a href="{{ path('bookcase_delete', {'id': item.id}) }}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
+
